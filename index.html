@@ -208,6 +208,174 @@
 
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
+  /* ── 네비게이션 ── */
+  .nav-menu {
+    display: flex;
+    gap: 4px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 4px;
+  }
+  .nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    min-width: 88px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    letter-spacing: 0.3px;
+  }
+  .nav-item:hover { color: var(--text-primary); background: rgba(255,255,255,0.07); }
+  .nav-item.active {
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    color: #fff;
+    box-shadow: 0 2px 14px rgba(255,45,120,0.45);
+  }
+
+  /* ── 페이지 전환 ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── 홈 페이지 ── */
+  .home-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 60px 20px 40px;
+    min-height: 340px;
+  }
+  .home-hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .home-hero-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .home-hero-video video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .home-logo-big {
+    font-family: 'Orbitron', monospace;
+    font-size: 48px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+  }
+  .home-tagline {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0;
+    max-width: 320px;
+  }
+  .home-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 20px 40px;
+  }
+  .home-feature-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .home-feature-icon { font-size: 28px; margin-bottom: 10px; }
+  .home-feature-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+  .home-feature-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+  @media (min-width: 1024px) {
+    .home-logo-big { font-size: 80px; }
+    .home-tagline { font-size: 20px; max-width: 480px; }
+    .home-hero { flex-direction: row; align-items: center; min-height: 480px; padding: 80px 40px 60px; gap: 48px; }
+    .home-hero-left { align-items: center; text-align: center; flex: 1; }
+    .home-hero-video { flex: 1; min-width: 0; }
+    .home-features { grid-template-columns: repeat(4, 1fr); padding: 0 0 60px; gap: 18px; }
+    .home-feature-card { padding: 28px 20px; }
+    .home-feature-icon { font-size: 36px; }
+    .home-feature-title { font-size: 15px; }
+    .home-feature-desc { font-size: 13px; }
+  }
+
+  /* ── About 섹션 (우주 배경) ── */
+  .about-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    padding: 60px 32px;
+    background: #020408;
+  }
+  .about-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, #050810, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .about-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .about-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .about-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(0,229,255,0.5);
+  }
+  .about-text {
+    font-size: 14px;
+    color: rgba(220, 230, 255, 0.85);
+    line-height: 2;
+    white-space: pre-line;
+  }
+  .about-text p {
+    margin-bottom: 20px;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  @media (min-width: 1024px) {
+    .about-section { padding: 80px 60px; }
+    .about-title { font-size: 22px; margin-bottom: 36px; }
+    .about-text { font-size: 16px; line-height: 2.1; }
+  }
+
   /* SECTION */
   .section { padding: 0 20px; margin-bottom: 20px; }
 
@@ -812,11 +980,84 @@
   <!-- HEADER -->
   <header class="header">
     <div class="logo">VMate</div>
+    <nav class="nav-menu">
+      <div class="nav-item active" onclick="showPage('home', this)">홈</div>
+      <div class="nav-item" onclick="showPage('mate', this)">메이트 탐색</div>
+    </nav>
     <div class="header-actions">
       <div class="notif-btn">🔔<span class="notif-dot"></span></div>
       <div class="avatar-btn">🎮</div>
     </div>
   </header>
+
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page active">
+    <div class="home-hero">
+      <div class="home-hero-left">
+        <div class="home-logo-big">VMate</div>
+        <p class="home-tagline">버츄얼 게이밍 메이트와 함께<br>새로운 플레이 경험을 시작하세요</p>
+      </div>
+      <div class="home-hero-video">
+        <video controls preload="metadata">
+          <source src="https://img.wecandoeat.com/hd/test.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <div class="about-section">
+      <canvas class="about-canvas" id="spaceCanvas"></canvas>
+      <div class="about-content">
+        <div class="about-title">브이메이트 세계관 스토리</div>
+        <div class="about-text">
+          <p>어느 날부터 사람들 사이에서<br>정체를 알 수 없는 한 홈페이지가 퍼지기 시작했다.</p>
+          <p>광고도 없었다.<br>유명 스트리머의 홍보도 없었다.<br>누가 만들었는지도 알려지지 않았다.</p>
+          <p>하지만 사람들은 이상하게 그곳을 기억했다.</p>
+          <p>브이메이트.</p>
+          <p>처음 사이트에 들어가면<br>화려한 소개도, 자극적인 문구도 없다.</p>
+          <p>검은 화면 위로<br>짧은 문장 하나만 나타난다.</p>
+          <p>"지금, 이순간 누군가와 연결 신호가 있습니다."</p>
+          <p>브이메이트는 일반적인 방송 플랫폼과는 조금 달랐다.</p>
+          <p>이곳의 사람들은<br>서로를 시청자나 BJ라고 부르지 않았다.</p>
+          <p>"메이트."</p>
+          <p>그게 이곳의 이름이었다.</p>
+          <p>누군가는 함께 게임을 했고,<br>누군가는 새벽에 대화를 나눴고,<br>누군가는 같은 영화를 보며 시간을 보냈다.</p>
+          <p>특별한 목적은 없었다.</p>
+          <p>그저 누군가의 하루에 잠깐 머무르고,<br>잠시 혼자가 아니게 되는 공간.</p>
+          <p>이상한 점은 따로 있었다.</p>
+          <p>우선 사이트 회원가입도 특이해.</p>
+          <p>나이, 성별, 개인정보를 안 묻고</p>
+          <p>요즘 자주 하는 게임, 새벽형인지 아침형인지<br>말 많은 사람 좋아하는지, 조용한 분위기 좋아하는지, 혼자 있는 시간이 편한지 외로운지</p>
+          <p>이런 것들이야. 그리고 마지막 질문은</p>
+          <p>"당신은 잠들기전 누군가의 하루에<br>잠깐 머물러본 적이 있나요?"</p>
+          <p>사람들은 브이메이트를 오래 사용할수록<br>누군가에게 의존하기보다<br>오히려 편안함을 느꼈다.</p>
+          <p>사이트 내부에는<br>이 문장이 항상 적혀 있었다.</p>
+          <p>"메이트는 여러분의 메이트이지 직원이 아닙니다."</p>
+          <p>그래서 브이메이트에는<br>독특한 규칙들이 존재했다.</p>
+          <p>과도한 집착 금지<br>감정 조종 금지<br>사적 의존 유도 금지<br>현실 관계 강요 금지</p>
+          <p>브이메이트는 사람을 붙잡지 않으며 그럴예정도 없다고 한다.</p>
+          <p>대신 잠시 연결될 수 있는 시간을 만들어줄뿐,</p>
+          <p>인터넷에서는 점점 이런 말들이 올라오기 시작했다.</p>
+          <p>"그냥 게임 한 판 했을 뿐인데 기분이 좋았다."</p>
+          <p>"오래 알던 친구 같은 느낌이었다."</p>
+          <p>"이상하게 다시 들어가게 된다."</p>
+          <p>누군가는 브이메이트를<br>새로운 형태의 커뮤니티라고 불렀고,</p>
+          <p>누군가는<br>현대인의 외로움이 만들어낸 공간이라고 말했다.</p>
+          <p>하지만 지금도 아무도 모른다.</p>
+          <p>브이메이트를 처음 만든 사람이 누구인지.</p>
+          <p>그리고 왜 이 사이트가 만들어졌는지.</p>
+          <p>다만 한 가지는 분명했다.</p>
+          <p>현실 속 사람들은 점점 혼자 있는 데 익숙해졌고,<br>브이메이트는 그 사이에서 조용히 나타났다는 것.</p>
+          <p>그리고 오늘도 누군가는<br>그 문장을 처음 마주하게 된다.</p>
+          <p>"지금 이순간에, 누군가와 연결 신호가 있습니다."</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MATE PAGE -->
+  <div id="page-mate" class="page">
 
   <!-- HERO -->
   <section class="hero">
@@ -918,6 +1159,8 @@
 
     </div>
   </section>
+
+  </div><!-- /page-mate -->
 
 </div>
 
@@ -1240,8 +1483,104 @@
 
 </script>
 
+<!-- Page Navigation -->
+<script>
+function showPage(pageId, navEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  navEl.classList.add('active');
+}
+</script>
+
+<!-- Space Canvas Animation -->
+<script>
+(function() {
+  var canvas = document.getElementById('spaceCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var stars = [];
+  var ripples = [];
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function initStars() {
+    stars = [];
+    var n = Math.floor((canvas.width * canvas.height) / 3000);
+    for (var i = 0; i < n; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.4 + 0.3,
+        a: Math.random(),
+        da: (Math.random() * 0.004 + 0.001) * (Math.random() < 0.5 ? 1 : -1)
+      });
+    }
+  }
+
+  function addRipple() {
+    if (stars.length === 0) return;
+    var s = stars[Math.floor(Math.random() * stars.length)];
+    ripples.push({ x: s.x, y: s.y, r: 0, maxR: Math.random() * 120 + 60, a: 0.7, done: false });
+  }
+
+  var rippleTimer = 0;
+  function draw(ts) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // stars
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      s.a += s.da;
+      if (s.a > 1) { s.a = 1; s.da = -Math.abs(s.da); }
+      if (s.a < 0.1) { s.a = 0.1; s.da = Math.abs(s.da); }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(200,220,255,' + s.a.toFixed(2) + ')';
+      ctx.fill();
+    }
+
+    // ripples
+    for (var j = ripples.length - 1; j >= 0; j--) {
+      var rp = ripples[j];
+      rp.r += 0.3;
+      rp.a -= 0.3 / rp.maxR;
+      if (rp.a <= 0 || rp.r >= rp.maxR) { ripples.splice(j, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(100,200,255,' + rp.a.toFixed(2) + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // spawn ripple every ~3s
+    rippleTimer++;
+    if (rippleTimer > 180) { addRipple(); rippleTimer = 0; }
+
+    requestAnimationFrame(draw);
+  }
+
+  function init() {
+    resize();
+    initStars();
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', function() { resize(); initStars(); });
+  // wait for layout
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    setTimeout(init, 0);
+  }
+})();
+</script>
+
 <!-- Bouncing Character -->
-<div id="bouncingWrap" style="position:fixed; z-index:9999; pointer-events:none;">
+<div id="bouncingWrap" style="position:fixed; right:24px; bottom:24px; z-index:9999; pointer-events:none;">
   <div id="speechBubble" style="
     position:absolute;
     bottom:calc(100% + 8px);
@@ -1255,7 +1594,7 @@
     padding:6px 12px;
     border-radius:12px;
     box-shadow:0 2px 8px rgba(0,0,0,0.25);
-  ">제가 도와드릴께요!<span style="
+  ">여행자분, 처음오셨나요?<span style="
     position:absolute;
     bottom:-7px;
     left:50%;
@@ -1265,44 +1604,9 @@
     border-right:7px solid transparent;
     border-top:8px solid #fff;
   "></span></div>
-  <img id="bouncingChar" src="images/char_right_run.png" alt="character"
+  <img src="images/char_left_run.png" alt="character"
     style="width:120px; height:auto; display:block;">
 </div>
-
-<script>
-(function() {
-  const wrap   = document.getElementById('bouncingWrap');
-  const el     = document.getElementById('bouncingChar');
-  const imgLeft  = 'images/char_left_run.png';
-  const imgRight = 'images/char_right_run.png';
-
-  let x = 100, y = 100;
-  let dx = 1.25, dy = 1;
-
-  function step() {
-    const W = window.innerWidth;
-    const H = window.innerHeight;
-    const w = wrap.offsetWidth;
-    const h = wrap.offsetHeight;
-
-    x += dx;
-    y += dy;
-
-    if (x + w >= W) { x = W - w; dx = -Math.abs(dx); }
-    if (x <= 0)      { x = 0;     dx =  Math.abs(dx); }
-    if (y + h >= H)  { y = H - h; dy = -Math.abs(dy); }
-    if (y <= 0)      { y = 0;     dy =  Math.abs(dy); }
-
-    el.src = dx < 0 ? imgLeft : imgRight;
-    wrap.style.left = x + 'px';
-    wrap.style.top  = y + 'px';
-
-    requestAnimationFrame(step);
-  }
-
-  requestAnimationFrame(step);
-})();
-</script>
 
 </body>
 </html>
