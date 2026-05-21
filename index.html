@@ -122,7 +122,7 @@
     margin: 0 0 4px;
     overflow: hidden;
     position: relative;
-    min-height: 220px;
+    min-height: 440px;
     background: transparent;
     border: none;
     box-shadow: none;
@@ -747,14 +747,71 @@
     box-shadow: none;
   }
 
+@media (min-width: 1024px) {
+  .container {
+    max-width: 80%;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 0 80px;
+  }
+
+  .section {
+    padding: 0;
+  }
+
+  .game-chips {
+    overflow-x: visible;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* ── Hero 이미지 전체 표시, 텍스트 2배, 왼쪽 1/3 수직 중앙 ── */
+  .hero {
+    display: flex;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .hero-bg-img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    width: 33.333%;
+    padding: 0 0 0 40px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  .hero-sub {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  .hero-cta {
+    font-size: 28px;
+    padding: 24px 48px;
+    border-radius: 20px;
+  }
+}
+
 </style>
 </head>
 <body>
+
 <div class="container">
 
   <!-- HEADER -->
   <header class="header">
-    <div class="logo">V-MATE</div>
+    <div class="logo">VMate</div>
     <div class="header-actions">
       <div class="notif-btn">🔔<span class="notif-dot"></span></div>
       <div class="avatar-btn">🎮</div>
@@ -769,7 +826,7 @@
     <div class="hero-particles"><span></span><span></span><span></span><span></span><span></span></div>
     <div class="hero-content">
       <h1 class="hero-title">함께 플레이할<br><span class="highlight">Virtual 메이트</span>를<br>찾아보세요</h1>
-      <a href="#" class="hero-cta">메이트 탐색하기 →</a></div>
+      <a href="#" class="hero-cta">메이트 탐색하기 →</a>
     </div>
   </section>
 
@@ -1181,6 +1238,70 @@
 
 
 
+</script>
+
+<!-- Bouncing Character -->
+<div id="bouncingWrap" style="position:fixed; z-index:9999; pointer-events:none;">
+  <div id="speechBubble" style="
+    position:absolute;
+    bottom:calc(100% + 8px);
+    left:50%;
+    transform:translateX(-50%);
+    background:#fff;
+    color:#222;
+    font-size:12px;
+    font-weight:700;
+    white-space:nowrap;
+    padding:6px 12px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.25);
+  ">제가 도와드릴께요!<span style="
+    position:absolute;
+    bottom:-7px;
+    left:50%;
+    transform:translateX(-50%);
+    width:0;height:0;
+    border-left:7px solid transparent;
+    border-right:7px solid transparent;
+    border-top:8px solid #fff;
+  "></span></div>
+  <img id="bouncingChar" src="images/char_right_run.png" alt="character"
+    style="width:120px; height:auto; display:block;">
+</div>
+
+<script>
+(function() {
+  const wrap   = document.getElementById('bouncingWrap');
+  const el     = document.getElementById('bouncingChar');
+  const imgLeft  = 'images/char_left_run.png';
+  const imgRight = 'images/char_right_run.png';
+
+  let x = 100, y = 100;
+  let dx = 1.25, dy = 1;
+
+  function step() {
+    const W = window.innerWidth;
+    const H = window.innerHeight;
+    const w = wrap.offsetWidth;
+    const h = wrap.offsetHeight;
+
+    x += dx;
+    y += dy;
+
+    if (x + w >= W) { x = W - w; dx = -Math.abs(dx); }
+    if (x <= 0)      { x = 0;     dx =  Math.abs(dx); }
+    if (y + h >= H)  { y = H - h; dy = -Math.abs(dy); }
+    if (y <= 0)      { y = 0;     dy =  Math.abs(dy); }
+
+    el.src = dx < 0 ? imgLeft : imgRight;
+    wrap.style.left = x + 'px';
+    wrap.style.top  = y + 'px';
+
+    requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+})();
 </script>
 
 </body>
