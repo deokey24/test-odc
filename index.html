@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>V-MATE — Virtual Gaming Companions</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-deep: #050810;
@@ -21,7 +21,7 @@
 
   body {
     background: var(--bg-deep);
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Exo 2', 'Exo 2', 'Noto Sans KR', sans-serif;
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
@@ -72,7 +72,7 @@
   }
 
   .logo {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-weight: 900;
     font-size: 20px;
     letter-spacing: 2px;
@@ -192,7 +192,7 @@
     display: inline-flex; align-items: center; gap: 8px;
     background: linear-gradient(135deg, var(--neon-pink), #c71aa0);
     border: none; border-radius: 14px; padding: 13px 24px;
-    font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 700;
+    font-family: 'Exo 2', 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 700;
     color: white; cursor: pointer;
     box-shadow: 0 4px 24px rgba(255, 45, 120, 0.45), 0 0 0 1px rgba(255,45,120,0.2);
     text-decoration: none;
@@ -203,7 +203,7 @@
     margin-top: 20px; padding-top: 16px;
     border-top: 1px solid rgba(255,255,255,0.06);
   }
-  .hero-stat-num { font-family: 'Orbitron', monospace; font-size: 16px; font-weight: 700; color: var(--neon-cyan); display: block; }
+  .hero-stat-num { font-family: 'Exo 2', sans-serif; font-size: 16px; font-weight: 700; color: var(--neon-cyan); display: block; }
   .hero-stat-label { font-size: 10px; color: var(--text-muted); margin-top: 2px; display: block; }
 
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -286,7 +286,7 @@
     border: 1px solid rgba(255,255,255,0.15);
     background: rgba(255,255,255,0.06);
     color: var(--text-muted);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
@@ -305,7 +305,7 @@
     color: var(--text-primary);
   }
   .home-logo-big {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 48px;
     font-weight: 900;
     background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
@@ -372,13 +372,14 @@
   }
   .about-bg-slide {
     position: absolute;
-    top: 60px;
+    top: 0;
+    bottom: 0;
     right: 0;
     z-index: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 120px;
+    justify-content: space-evenly;
     pointer-events: none;
   }
   .about-bg-slide img {
@@ -398,7 +399,7 @@
     margin: 0 auto;
   }
   .about-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--neon-cyan);
@@ -424,12 +425,13 @@
     border-radius: 10px;
     padding: 28px 28px 24px;
     margin: 8px 0 20px;
+    width: 80%;
   }
   .protocol-header {
     display: flex;
     align-items: center;
     gap: 14px;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -486,6 +488,16 @@
     padding: 60px 32px;
     background: #020408;
   }
+  .about-star-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, black 45%, transparent 72%);
+    mask-image: linear-gradient(to right, black 45%, transparent 72%);
+  }
   .company-canvas {
     position: absolute;
     inset: 0;
@@ -509,7 +521,7 @@
     margin: 0 auto;
   }
   .company-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--neon-cyan);
@@ -535,7 +547,7 @@
 
   .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
 
-  .section-title { font-family: 'Orbitron', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+  .section-title { font-family: 'Exo 2', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; }
 
   .view-all { font-size: 12px; color: var(--neon-cyan); text-decoration: none; font-weight: 500; }
 
@@ -635,7 +647,7 @@
   }
 
   .mlc-name {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 14px; font-weight: 700;
     color: var(--text-primary);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -681,6 +693,18 @@
     color: var(--neon-purple);
   }
 
+  .mlc-hashtags {
+    display: flex; flex-wrap: wrap; gap: 3px;
+    align-items: center;
+    flex: 1;
+    margin: 0 6px;
+    overflow: hidden;
+  }
+  .mlc-hashtags span {
+    font-size: 10px; font-weight: 600;
+    color: rgba(180, 200, 255, 0.5);
+    white-space: nowrap;
+  }
   .mlc-desc {
     font-size: 11px; color: var(--text-muted);
     line-height: 1.5;
@@ -713,7 +737,7 @@
   .mlc-price-chip .coin { font-size: 13px; }
 
   .mlc-price-chip .price-val {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 11px; font-weight: 700; color: var(--neon-pink);
   }
 
@@ -788,7 +812,7 @@
 
   .modal-highlights-label {
     position: absolute; bottom: 60px; left: 16px;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 9px; font-weight: 700; letter-spacing: 2px;
     color: rgba(255,255,255,0.5);
   }
@@ -812,7 +836,7 @@
     display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
   }
   .modal-name {
-    font-family: 'Orbitron', monospace; font-size: 22px; font-weight: 900;
+    font-family: 'Exo 2', sans-serif; font-size: 22px; font-weight: 900;
     color: var(--text-primary);
   }
   .modal-verified {
@@ -854,13 +878,13 @@
     border-radius: 12px; padding: 12px 10px; text-align: center;
   }
   .modal-stat-val {
-    font-family: 'Orbitron', monospace; font-size: 18px; font-weight: 700;
+    font-family: 'Exo 2', sans-serif; font-size: 18px; font-weight: 700;
     color: var(--neon-pink); display: block;
   }
   .modal-stat-label { font-size: 9px; color: var(--text-muted); margin-top: 3px; letter-spacing: 0.5px; }
 
   .modal-section-label {
-    font-family: 'Orbitron', monospace; font-size: 10px; font-weight: 700;
+    font-family: 'Exo 2', sans-serif; font-size: 10px; font-weight: 700;
     letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 10px;
   }
 
@@ -879,7 +903,7 @@
   }
   .modal-pack-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
   .modal-pack-price {
-    font-family: 'Orbitron', monospace; font-size: 15px; font-weight: 700;
+    font-family: 'Exo 2', sans-serif; font-size: 15px; font-weight: 700;
     color: var(--text-primary); line-height: 1.3;
   }
   .modal-pack.selected .modal-pack-price { color: var(--neon-pink); }
@@ -903,7 +927,7 @@
     width: 100%; padding: 16px;
     background: linear-gradient(135deg, var(--neon-pink), #c71aa0);
     border: none; border-radius: 16px;
-    font-family: 'Orbitron', monospace; font-size: 14px; font-weight: 700;
+    font-family: 'Exo 2', sans-serif; font-size: 14px; font-weight: 700;
     color: white; cursor: pointer; letter-spacing: 1px;
     box-shadow: 0 4px 24px rgba(255,45,120,0.4);
     margin-bottom: 12px;
@@ -914,7 +938,7 @@
   .modal-msg-btn {
     width: 100%; padding: 12px;
     background: transparent; border: none;
-    font-family: 'Orbitron', monospace; font-size: 12px; font-weight: 600;
+    font-family: 'Exo 2', sans-serif; font-size: 12px; font-weight: 600;
     color: var(--text-muted); cursor: pointer; letter-spacing: 1px;
   }
 
@@ -923,7 +947,7 @@
   .modal-booking { padding: 0 20px 20px; }
 
   .booking-section-label {
-    font-family: 'Orbitron', monospace; font-size: 10px; font-weight: 700;
+    font-family: 'Exo 2', sans-serif; font-size: 10px; font-weight: 700;
     letter-spacing: 1.5px; color: var(--text-muted);
     display: flex; align-items: center; gap: 8px;
     margin-bottom: 12px; margin-top: 20px;
@@ -943,7 +967,7 @@
   }
 
   .cal-month {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Exo 2', 'Noto Sans KR', sans-serif;
     font-size: 18px; font-weight: 700; color: var(--text-primary);
   }
 
@@ -1048,7 +1072,7 @@
   .booking-price-info {}
   .booking-price-label { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
   .booking-price-val {
-    font-family: 'Orbitron', monospace; font-size: 22px; font-weight: 900;
+    font-family: 'Exo 2', sans-serif; font-size: 22px; font-weight: 900;
     color: var(--text-primary);
   }
 
@@ -1056,7 +1080,7 @@
     background: linear-gradient(135deg, #e8a040, #c47a20);
     border: none; border-radius: 16px;
     padding: 14px 24px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Exo 2', 'Noto Sans KR', sans-serif;
     font-size: 15px; font-weight: 700; color: white;
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(200,130,30,0.4);
@@ -1183,8 +1207,6 @@
       <div class="nav-item" onclick="showPage('mate', this)">메이트 라운지</div>
     </nav>
     <div class="header-actions">
-      <div class="notif-btn">🔔<span class="notif-dot"></span></div>
-      <div class="avatar-btn">🎮</div>
     </div>
   </header>
 
@@ -1211,6 +1233,7 @@
 
     <!-- ABOUT SECTION -->
     <div class="about-section">
+      <canvas class="about-star-canvas" id="aboutStarCanvas"></canvas>
       <div class="about-bg-slide">
         <img src="images/intro_1.png" alt="">
         <img src="images/intro_2.png" alt="">
@@ -1319,7 +1342,10 @@
         </div>
         <div class="mlc-body">
           <div class="mlc-top">
-            <div class="mlc-name">NOVA</div>
+            <div class="mlc-name">노바 (NOVA)</div>
+            <div class="mlc-hashtags">
+              <span>#병약소녀</span><span>#저음</span><span>#여우</span><span>#친화력좋음</span>
+            </div>
             <div class="mlc-online-text">
               <span class="mlc-online-dot"></span> Online
             </div>
@@ -1332,11 +1358,9 @@
           <div class="mlc-footer">
             <div class="mlc-price-group">
               <div class="mlc-price-chip">
-                <span class="coin">🪙</span>
-                <span class="price-val">₩20,000</span>
-                <span style="font-size:10px;color:var(--text-muted)">/1h</span>
+                <span class="price-val">티켓 20장</span>
+                <span style="font-size:10px;color:var(--text-muted)">/ 1h</span>
               </div>
-              <span class="mlc-discount">99% 할인</span>
             </div>
             <div class="mlc-rating">★ 4.9 <span>(1.2k)</span></div>
           </div>
@@ -1352,7 +1376,10 @@
         </div>
         <div class="mlc-body">
           <div class="mlc-top">
-            <div class="mlc-name">LYRA</div>
+            <div class="mlc-name">리아 (RIA)</div>
+            <div class="mlc-hashtags">
+              <span>#다정다감</span><span>#공감MAX</span><span>#감성풍부</span><span>#쑥쓰러움</span>
+            </div>
             <div class="mlc-online-text">
               <span class="mlc-online-dot"></span> Online
             </div>
@@ -1365,13 +1392,82 @@
           <div class="mlc-footer">
             <div class="mlc-price-group">
               <div class="mlc-price-chip">
-                <span class="coin">🪙</span>
-                <span class="price-val">₩15,000</span>
-                <span style="font-size:10px;color:var(--text-muted)">/2판</span>
+                <span class="price-val">티켓 15장</span>
+                <span style="font-size:10px;color:var(--text-muted)">/ 2판</span>
               </div>
-              <span class="mlc-discount">99% 할인</span>
             </div>
             <div class="mlc-rating">★ 5.0 <span>(850)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 3: 세미 -->
+      <div class="mate-list-card">
+        <div class="mlc-thumb">
+          <img src="images/mate03.png" alt="세미">
+          <div class="mlc-thumb-overlay"></div>
+          <div class="mlc-online">ONLINE</div>
+        </div>
+        <div class="mlc-body">
+          <div class="mlc-top">
+            <div class="mlc-name">세미 (SEMI)</div>
+            <div class="mlc-hashtags">
+              <span>#발랄</span><span>#유쾌</span><span>#미친텐션</span><span>#욕·샤우팅주의</span><span>#게임덕후</span><span>#반말가능</span>
+            </div>
+            <div class="mlc-online-text">
+              <span class="mlc-online-dot"></span> Online
+            </div>
+          </div>
+          <div class="mlc-tags">
+            <span class="mlc-tag game">🎮 게임 덕후</span>
+            <span class="mlc-tag game">🎮 오버워치</span>
+            <span class="mlc-tag" style="background:rgba(255,200,0,0.12);border-color:rgba(255,200,0,0.35);color:#ffd700;">⚡ 미친텐션</span>
+            <span class="mlc-tag" style="background:rgba(255,100,0,0.12);border-color:rgba(255,100,0,0.35);color:#ff6600;">⚠️ 욕·샤우팅주의</span>
+          </div>
+          <div class="mlc-desc">발랄하고 유쾌한 게임 덕후. 텐션 미쳤고 바로 반말 가능! 같이 소리지르며 게임할 분 환영 🔥</div>
+          <div class="mlc-footer">
+            <div class="mlc-price-group">
+              <div class="mlc-price-chip">
+                <span class="price-val">티켓 15장</span>
+                <span style="font-size:10px;color:var(--text-muted)">/ 1h</span>
+              </div>
+            </div>
+            <div class="mlc-rating">★ 4.8 <span>(930)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 4: 태오 -->
+      <div class="mate-list-card">
+        <div class="mlc-thumb">
+          <img src="images/mate04.png" alt="태오">
+          <div class="mlc-thumb-overlay"></div>
+          <div class="mlc-online">ONLINE</div>
+        </div>
+        <div class="mlc-body">
+          <div class="mlc-top">
+            <div class="mlc-name">태오 (TAO)</div>
+            <div class="mlc-hashtags">
+              <span>#리드</span><span>#능글</span><span>#맑은중저음</span><span>#장난끼</span><span>#게임덕후</span><span>#반말가능</span>
+            </div>
+            <div class="mlc-online-text">
+              <span class="mlc-online-dot"></span> Online
+            </div>
+          </div>
+          <div class="mlc-tags">
+            <span class="mlc-tag tier-radiant">👑 발로란트 초월자</span>
+            <span class="mlc-tag game">🎮 게임 덕후</span>
+            <span class="mlc-tag" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.3);color:#00c8ff;">🎙 맑은저음</span>
+          </div>
+          <div class="mlc-desc">리드하고 능글맞은 장난끼 가득 발로란트 초월자. 맑은 저음 보이스에 바로 반말 가능. 같이 초월해봐요 😎</div>
+          <div class="mlc-footer">
+            <div class="mlc-price-group">
+              <div class="mlc-price-chip">
+                <span class="price-val">티켓 20장</span>
+                <span style="font-size:10px;color:var(--text-muted)">/ 1h</span>
+              </div>
+            </div>
+            <div class="mlc-rating">★ 4.9 <span>(1.1k)</span></div>
           </div>
         </div>
       </div>
@@ -1513,7 +1609,7 @@
 <script>
   const mates = {
     0: {
-      name: 'NOVA',
+      name: '노바 (NOVA)',
       game: '발로란트 · 레디언트',
       gameSub: '최근 48시간 내 매칭 24회 · 승률 72%',
       gameIcon: '🎮',
@@ -1525,7 +1621,7 @@
       tags: ['#하이텐션','#오더가능','#에임괴물','#야간전담'],
     },
     1: {
-      name: 'LYRA',
+      name: '리아 (RIA)',
       game: '리그오브레전드 · 다이아',
       gameSub: '최근 48시간 내 매칭 18회 · 승률 68%',
       gameIcon: '🎮',
@@ -1535,6 +1631,30 @@
       pack1: '20,000원 / 1시간', pack1Sub: '무제한 연전 가능',
       pack2: '15,000원 / 2판', pack2Sub: '즐겜 보장',
       tags: ['#친절함','#소통왕','#서폿특화','#야간가능'],
+    },
+    2: {
+      name: '세미 (SEMI)',
+      game: '게임 덕후 · 미친텐션',
+      gameSub: '발랄하고 유쾌 · 욕·샤우팅 주의 · 바로 반말 가능',
+      gameIcon: '⚡',
+      stat1: '텐션MAX', stat1Label: 'ENERGY',
+      stat2: '즉시', stat2Label: '반말OK',
+      stat3: '올라운드', stat3Label: 'ROLE',
+      pack1: '15,000원 / 1시간', pack1Sub: '같이 소리지르기 가능',
+      pack2: '10,000원 / 2판', pack2Sub: '즐겜 보장',
+      tags: ['#발랄','#유쾌','#미친텐션','#반말가능'],
+    },
+    3: {
+      name: '태오 (TAO)',
+      game: '발로란트 · 초월자',
+      gameSub: '리드형 · 맑은저음 · 장난끼 · 바로 반말 가능',
+      gameIcon: '🎙',
+      stat1: '초월자', stat1Label: 'RANK',
+      stat2: '즉시', stat2Label: '반말OK',
+      stat3: '오더', stat3Label: 'ROLE',
+      pack1: '20,000원 / 1시간', pack1Sub: '발로란트 고티어 동행',
+      pack2: '15,000원 / 2판', pack2Sub: '장난끼 보장',
+      tags: ['#리드','#능글','#맑은저음','#장난끼'],
     }
   };
 
@@ -1712,6 +1832,58 @@ function showPage(pageId, navEl) {
 }
 </script>
 
+
+<!-- Star Canvas (about section) -->
+<script>
+(function() {
+  var canvas = document.getElementById('aboutStarCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var stars = [];
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    initStars();
+  }
+
+  function initStars() {
+    stars = [];
+    var n = Math.floor((canvas.width * canvas.height) / 3000);
+    for (var i = 0; i < n; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.4 + 0.3,
+        a: Math.random(),
+        da: (Math.random() * 0.004 + 0.001) * (Math.random() < 0.5 ? 1 : -1)
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      s.a += s.da;
+      if (s.a > 1) { s.a = 1; s.da = -Math.abs(s.da); }
+      if (s.a < 0.1) { s.a = 0.1; s.da = Math.abs(s.da); }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(200,220,255,' + s.a.toFixed(2) + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { resize(); requestAnimationFrame(draw); });
+  } else {
+    setTimeout(function() { resize(); requestAnimationFrame(draw); }, 0);
+  }
+})();
+</script>
 
 <!-- Star Canvas (company section) -->
 <script>
