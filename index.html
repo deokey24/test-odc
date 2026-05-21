@@ -370,6 +370,60 @@
   }
   .about-text p:last-child { margin-bottom: 0; }
 
+  .protocol-card {
+    background: rgba(8, 5, 15, 0.9);
+    border: 1px solid rgba(180, 20, 50, 0.35);
+    border-left: 3px solid #b81030;
+    border-radius: 10px;
+    padding: 28px 28px 24px;
+    margin: 8px 0 20px;
+  }
+  .protocol-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #b81030;
+    margin-bottom: 22px;
+  }
+  .protocol-header::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: #b81030;
+    flex-shrink: 0;
+  }
+  .protocol-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+  }
+  .protocol-rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(220, 230, 255, 0.88);
+    font-weight: 500;
+  }
+  .protocol-rule::before {
+    content: '//';
+    color: #b81030;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  @media (min-width: 1024px) {
+    .protocol-card { padding: 32px 36px 28px; }
+    .protocol-header { font-size: 11px; margin-bottom: 26px; }
+    .protocol-rule { font-size: 15px; }
+  }
+
   @media (min-width: 1024px) {
     .about-section { padding: 80px 60px; }
     .about-title { font-size: 22px; margin-bottom: 36px; }
@@ -1034,7 +1088,15 @@
           <p>사이트 내부에는<br>이 문장이 항상 적혀 있었다.</p>
           <p>"메이트는 여러분의 메이트이지 직원이 아닙니다."</p>
           <p>그래서 브이메이트에는<br>독특한 규칙들이 존재했다.</p>
-          <p>과도한 집착 금지<br>감정 조종 금지<br>사적 의존 유도 금지<br>현실 관계 강요 금지</p>
+          <div class="protocol-card">
+            <div class="protocol-header">PROTOCOL // 규약</div>
+            <div class="protocol-rules">
+              <div class="protocol-rule">과도한 집착 금지</div>
+              <div class="protocol-rule">감정 조종 금지</div>
+              <div class="protocol-rule">사적 의존 유도 금지</div>
+              <div class="protocol-rule">현실 관계 강요 금지</div>
+            </div>
+          </div>
           <p>브이메이트는 사람을 붙잡지 않으며 그럴예정도 없다고 한다.</p>
           <p>대신 잠시 연결될 수 있는 시간을 만들어줄뿐,</p>
           <p>인터넷에서는 점점 이런 말들이 올라오기 시작했다.</p>
@@ -1558,7 +1620,7 @@ function showPage(pageId, navEl) {
 
     // spawn ripple every ~3s
     rippleTimer++;
-    if (rippleTimer > 180) { addRipple(); rippleTimer = 0; }
+    if (rippleTimer > 60) { addRipple(); rippleTimer = 0; }
 
     requestAnimationFrame(draw);
   }
