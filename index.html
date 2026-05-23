@@ -2047,6 +2047,7 @@ function showPage(pageId, navEl) {
   document.getElementById('page-' + pageId).classList.add('active');
   navEl.classList.add('active');
   navEl.classList.add('hide-mobile');
+  document.getElementById('bouncingWrap').style.display = pageId === 'home' ? '' : 'none';
 }
 </script>
 
