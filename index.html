@@ -225,6 +225,7 @@
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 14px;
     padding: 4px;
+    margin-left: auto;
   }
   .nav-item {
     flex: 1;
@@ -245,6 +246,10 @@
     background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
     color: #fff;
     box-shadow: 0 2px 14px rgba(255,45,120,0.45);
+  }
+
+  @media (max-width: 1023px) {
+    .header-actions { display: none; }
   }
 
   /* ── 페이지 전환 ── */
@@ -1838,6 +1843,10 @@
 <!-- Page Navigation -->
 <script>
 function showPage(pageId, navEl) {
+  if (pageId !== 'home') {
+    var v = document.getElementById('heroVideo');
+    if (v && !v.paused) v.pause();
+  }
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + pageId).classList.add('active');
@@ -1974,7 +1983,7 @@ function showPage(pageId, navEl) {
 <div id="bouncingWrap" style="position:fixed; right:24px; bottom:24px; z-index:9999; pointer-events:none;">
 
   <!-- 바로가기 생성 서브메뉴 (사이버 스타일로 구분) -->
-  <div id="shortcutMenu" style="display:none; flex-direction:column; align-items:center; gap:0; position:absolute; bottom:calc(100% + 148px); left:50%; transform:translateX(-50%); pointer-events:auto;">
+  <div id="shortcutMenu" style="display:none; flex-direction:column; align-items:center; gap:0; position:absolute; bottom:calc(100% + 130px); left:50%; transform:translateX(-50%); pointer-events:auto;">
     <div style="background:linear-gradient(135deg,#0b1f3a,#091525); border:1px solid #00e5ff; border-radius:14px; padding:10px 8px; box-shadow:0 4px 20px rgba(0,229,255,0.3); width:148px;">
       <div style="color:#00e5ff; font-size:10px; font-weight:800; text-align:center; letter-spacing:1.5px; margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid rgba(0,229,255,0.2);">바로가기 추가</div>
       <div onclick="addShortcutAndroid()" style="background:rgba(0,229,255,0.08); color:#cff4ff; font-size:12px; font-weight:700; padding:7px 10px; border-radius:8px; cursor:pointer; margin-bottom:5px; text-align:center; border:1px solid rgba(0,229,255,0.15); transition:background 0.15s;" onmouseover="this.style.background='rgba(0,229,255,0.18)'" onmouseout="this.style.background='rgba(0,229,255,0.08)'">안드로이드</div>
@@ -1985,19 +1994,18 @@ function showPage(pageId, navEl) {
   </div>
 
   <!-- 메인 메뉴 -->
-  <div id="charMenu" style="display:none; flex-direction:column; gap:8px; align-items:center; position:absolute; bottom:calc(100% + 54px); left:50%; transform:translateX(-50%); pointer-events:auto;">
+  <div id="charMenu" style="display:none; flex-direction:column; gap:8px; align-items:center; position:absolute; bottom:calc(100% + 36px); left:50%; transform:translateX(-50%); pointer-events:auto;">
     <div onclick="toggleShortcutMenu()" style="background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 14px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); cursor:pointer; user-select:none;">바로가기 생성 ✨</div>
     <div onclick="openCompanyPopup()" style="background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 14px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); cursor:pointer; user-select:none;">브이메이트 소개글</div>
-    <span style="position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); width:0;height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:8px solid #fff;"></span>
   </div>
 
   <!-- 기본 말풍선 -->
-  <div id="speechBubble" onclick="toggleCharMenu()" style="position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%); background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 12px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); pointer-events:auto; cursor:pointer; user-select:none;">
-    브이메이트에 처음오셨나요?<span style="position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); width:0;height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:8px solid #fff;"></span>
+  <div id="speechBubble" onclick="toggleCharMenu()" style="position:absolute; bottom:calc(100% - 10px); left:50%; transform:translateX(-50%); background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 12px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); pointer-events:auto; cursor:pointer; user-select:none;">
+    브이메이트에 처음오셨나요?<span style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%) rotate(30deg); width:0;height:0; border-left:11px solid transparent; border-right:11px solid transparent; border-top:12px solid #fff;"></span>
   </div>
 
   <!-- 메이티 캐릭터 -->
-  <img src="images/char_left_run.png" alt="메이티" onclick="toggleCharMenu()" style="width:120px; height:auto; display:block; pointer-events:auto; cursor:pointer;">
+  <img id="mateyImg" src="images/matey01.png" alt="메이티" onclick="toggleCharMenu()" style="width:120px; height:auto; display:block; pointer-events:auto; cursor:pointer;">
 </div>
 
 <!-- 메이티 안내 토스트 -->
@@ -2044,6 +2052,17 @@ function switchVideo(num, btn) {
   document.querySelectorAll('.video-switch-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
 }
+(function() {
+  var frames = ['images/matey01.png', 'images/matey02.png', 'images/matey03.png'];
+  var idx = 0, dir = 1;
+  setInterval(function() {
+    idx += dir;
+    if (idx >= frames.length - 1) dir = -1;
+    if (idx <= 0) dir = 1;
+    document.getElementById('mateyImg').src = frames[idx];
+  }, 200);
+})();
+
 var deferredPrompt = null;
 window.addEventListener('beforeinstallprompt', function(e) {
   e.preventDefault();
