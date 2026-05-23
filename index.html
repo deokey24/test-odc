@@ -778,7 +778,6 @@
     width: 110px;
     position: relative;
     overflow: hidden;
-    background: #ffffff;
   }
 
   .mlc-thumb img {
@@ -952,13 +951,13 @@
 
   @media (max-width: 600px) {
     .mate-list-card {
-      grid-template-columns: 140px 1fr;
+      grid-template-columns: 120px 1fr;
       grid-template-rows: auto auto auto;
       grid-template-areas: "thumb body" "name name" "hashtags hashtags";
       gap: 0;
     }
-    .mlc-thumb { width: 140px; height: 140px; margin: 0; }
-    .mlc-thumb img { width: 140px; height: 140px; object-fit: contain; object-position: center; }
+    .mlc-thumb { width: 120px; height: 140px; margin: 0 10px 0 0; }
+    .mlc-thumb img { width: 120px; height: 140px; object-fit: contain; object-position: center; }
     .mlc-thumb-overlay { display: none; }
     .mlc-body { padding-left: 0; }
     .mlc-name { padding: 4px 14px 2px; align-self: auto; }
