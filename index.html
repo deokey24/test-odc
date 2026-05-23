@@ -566,14 +566,39 @@
     max-width: 720px;
     margin: 0 auto;
   }
+  .about-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    cursor: pointer;
+  }
   .about-title {
     font-family: 'Exo 2', sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--neon-cyan);
-    margin-bottom: 28px;
     letter-spacing: 1px;
     text-shadow: 0 0 20px rgba(0,229,255,0.5);
+  }
+  .about-toggle-btn {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--neon-cyan);
+    border: 1px solid rgba(0,229,255,0.35);
+    border-radius: 20px;
+    padding: 5px 16px;
+    letter-spacing: 0.5px;
+    opacity: 0.75;
+    transition: opacity 0.2s, border-color 0.2s;
+    user-select: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .about-title-row:hover .about-toggle-btn {
+    opacity: 1;
+    border-color: rgba(0,229,255,0.7);
   }
   .about-text {
     font-size: 14px;
@@ -643,7 +668,8 @@
 
   @media (min-width: 1024px) {
     .about-section { padding: 80px 60px; }
-    .about-title { font-size: 22px; margin-bottom: 36px; }
+    .about-title { font-size: 22px; }
+    .about-title-row { margin-bottom: 36px; }
     .about-text { font-size: 16px; line-height: 2.1; }
   }
 
@@ -1476,8 +1502,11 @@
         <img src="images/intro_4.png" alt="">
       </div>
       <div class="about-content">
-        <div class="about-title">브이메이트(VMate) 세계관</div>
-        <div class="about-text">
+        <div class="about-title-row" onclick="toggleAbout(this)">
+          <div class="about-title">브이메이트(VMate) 세계관</div>
+          <span class="about-toggle-btn">열기 ▼</span>
+        </div>
+        <div class="about-text" style="display:none">
           <p>어느 날부터 사람들 사이에서<br>정체를 알 수 없는 한 홈페이지가 퍼지기 시작했다.</p>
           <p>광고도 없었다.<br>유명 스트리머의 홍보도 없었다.<br>누가 만들었는지도 알려지지 않았다.</p>
           <p>하지만 사람들은 이상하게 그곳을 기억했다.</p>
@@ -2536,11 +2565,23 @@ function addShortcutIOS() {
 }
 function addShortcutPC() {
   closeAllMaetyMenus();
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function() { deferredPrompt = null; });
-  } else {
-    document.getElementById('pcShortcutPopup').style.display = 'flex';
+  var url = window.location.href;
+  var content = '[InternetShortcut]\r\nURL=' + url + '\r\n';
+  var blob = new Blob([content], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'V-MATE.url';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function toggleAbout(row) {
+  var text = row.parentElement.querySelector('.about-text');
+  var btn = row.querySelector('.about-toggle-btn');
+  var open = text.style.display !== 'none';
+  text.style.display = open ? 'none' : '';
+  btn.textContent = open ? '열기 ▼' : '닫기 ▲';
+  if (!open) {
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 0);
   }
 }
 function closePCPopup() {
