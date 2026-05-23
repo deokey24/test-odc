@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>V-MATE — Virtual Gaming Companions</title>
+<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="V-MATE">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#050810">
+<link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -649,7 +658,7 @@
   .mlc-name {
     font-family: 'Exo 2', sans-serif;
     font-size: 14px; font-weight: 700;
-    color: var(--text-primary);
+    color: #00e564;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 
@@ -702,8 +711,15 @@
   }
   .mlc-hashtags span {
     font-size: 12px; font-weight: 600;
-    color: rgba(0, 229, 255, 0.85);
+    color: #ffffff;
     white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  .mlc-hashtags span::before {
+    content: '#';
+    color: #ffffff;
   }
   .mlc-desc {
     font-size: 11px; color: var(--text-muted);
@@ -1344,7 +1360,7 @@
           <div class="mlc-top">
             <div class="mlc-name">노바 (NOVA)</div>
             <div class="mlc-hashtags">
-              <span>#병약소녀</span><span>#저음</span><span>#여우</span><span>#친화력좋음</span>
+              <span>병약소녀</span><span>저음</span><span>여우</span><span>친화력좋음</span>
             </div>
             <div class="mlc-online-text">
               <span class="mlc-online-dot"></span> Online
@@ -1378,7 +1394,7 @@
           <div class="mlc-top">
             <div class="mlc-name">리아 (RIA)</div>
             <div class="mlc-hashtags">
-              <span>#다정다감</span><span>#공감MAX</span><span>#감성풍부</span><span>#쑥쓰러움</span>
+              <span>다정다감</span><span>공감MAX</span><span>감성풍부</span><span>쑥쓰러움</span>
             </div>
             <div class="mlc-online-text">
               <span class="mlc-online-dot"></span> Online
@@ -1412,7 +1428,7 @@
           <div class="mlc-top">
             <div class="mlc-name">세미 (SEMI)</div>
             <div class="mlc-hashtags">
-              <span>#발랄</span><span>#유쾌</span><span>#미친텐션</span><span>#욕·샤우팅주의</span><span>#게임덕후</span><span>#반말가능</span>
+              <span>발랄</span><span>유쾌</span><span>미친텐션</span><span>욕·샤우팅주의</span><span>게임덕후</span><span>반말가능</span>
             </div>
             <div class="mlc-online-text">
               <span class="mlc-online-dot"></span> Online
@@ -1446,7 +1462,7 @@
           <div class="mlc-top">
             <div class="mlc-name">태오 (TAEO)</div>
             <div class="mlc-hashtags">
-              <span>#리드</span><span>#능글</span><span>#맑은중저음</span><span>#장난끼</span><span>#게임덕후</span><span>#반말가능</span>
+              <span>리드</span><span>능글</span><span>맑은중저음</span><span>장난끼</span><span>게임덕후</span><span>반말가능</span>
             </div>
             <div class="mlc-online-text">
               <span class="mlc-online-dot"></span> Online
@@ -1954,18 +1970,57 @@ function showPage(pageId, navEl) {
   </div>
 </div>
 
-<!-- Bouncing Character -->
+<!-- 메이티 -->
 <div id="bouncingWrap" style="position:fixed; right:24px; bottom:24px; z-index:9999; pointer-events:none;">
-  <div id="charMenu" style="display:none; position:absolute; bottom:calc(100% + 54px); left:50%; transform:translateX(-50%); pointer-events:auto;">
-    <div onclick="openCompanyPopup()" style="position:relative; background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 14px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); cursor:pointer; user-select:none;">
-      브이메이트 소개글
-      <span style="position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); width:0;height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:8px solid #fff;"></span>
+
+  <!-- 바로가기 생성 서브메뉴 (사이버 스타일로 구분) -->
+  <div id="shortcutMenu" style="display:none; flex-direction:column; align-items:center; gap:0; position:absolute; bottom:calc(100% + 148px); left:50%; transform:translateX(-50%); pointer-events:auto;">
+    <div style="background:linear-gradient(135deg,#0b1f3a,#091525); border:1px solid #00e5ff; border-radius:14px; padding:10px 8px; box-shadow:0 4px 20px rgba(0,229,255,0.3); width:148px;">
+      <div style="color:#00e5ff; font-size:10px; font-weight:800; text-align:center; letter-spacing:1.5px; margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid rgba(0,229,255,0.2);">바로가기 추가</div>
+      <div onclick="addShortcutAndroid()" style="background:rgba(0,229,255,0.08); color:#cff4ff; font-size:12px; font-weight:700; padding:7px 10px; border-radius:8px; cursor:pointer; margin-bottom:5px; text-align:center; border:1px solid rgba(0,229,255,0.15); transition:background 0.15s;" onmouseover="this.style.background='rgba(0,229,255,0.18)'" onmouseout="this.style.background='rgba(0,229,255,0.08)'">안드로이드</div>
+      <div onclick="addShortcutIOS()" style="background:rgba(0,229,255,0.08); color:#cff4ff; font-size:12px; font-weight:700; padding:7px 10px; border-radius:8px; cursor:pointer; margin-bottom:5px; text-align:center; border:1px solid rgba(0,229,255,0.15); transition:background 0.15s;" onmouseover="this.style.background='rgba(0,229,255,0.18)'" onmouseout="this.style.background='rgba(0,229,255,0.08)'">아이폰</div>
+      <div onclick="addShortcutPC()" style="background:rgba(0,229,255,0.08); color:#cff4ff; font-size:12px; font-weight:700; padding:7px 10px; border-radius:8px; cursor:pointer; text-align:center; border:1px solid rgba(0,229,255,0.15); transition:background 0.15s;" onmouseover="this.style.background='rgba(0,229,255,0.18)'" onmouseout="this.style.background='rgba(0,229,255,0.08)'">PC</div>
     </div>
+    <div style="width:0;height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:8px solid #00e5ff;"></div>
   </div>
+
+  <!-- 메인 메뉴 -->
+  <div id="charMenu" style="display:none; flex-direction:column; gap:8px; align-items:center; position:absolute; bottom:calc(100% + 54px); left:50%; transform:translateX(-50%); pointer-events:auto;">
+    <div onclick="toggleShortcutMenu()" style="background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 14px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); cursor:pointer; user-select:none;">바로가기 생성 ✨</div>
+    <div onclick="openCompanyPopup()" style="background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 14px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); cursor:pointer; user-select:none;">브이메이트 소개글</div>
+    <span style="position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); width:0;height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:8px solid #fff;"></span>
+  </div>
+
+  <!-- 기본 말풍선 -->
   <div id="speechBubble" onclick="toggleCharMenu()" style="position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%); background:#fff; color:#222; font-size:12px; font-weight:700; white-space:nowrap; padding:6px 12px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.25); pointer-events:auto; cursor:pointer; user-select:none;">
     브이메이트에 처음오셨나요?<span style="position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); width:0;height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:8px solid #fff;"></span>
   </div>
-  <img src="images/char_left_run.png" alt="character" style="width:120px; height:auto; display:block;">
+
+  <!-- 메이티 캐릭터 -->
+  <img src="images/char_left_run.png" alt="메이티" onclick="toggleCharMenu()" style="width:120px; height:auto; display:block; pointer-events:auto; cursor:pointer;">
+</div>
+
+<!-- 메이티 안내 토스트 -->
+<div id="maetyToast" style="display:none; position:fixed; bottom:170px; right:24px; background:linear-gradient(135deg,#0b1f3a,#091525); border:1px solid #00e5ff; color:#cff4ff; font-size:12px; font-weight:600; padding:10px 14px; border-radius:12px; box-shadow:0 4px 16px rgba(0,229,255,0.25); z-index:10000; max-width:220px; line-height:1.6; pointer-events:none; transition:opacity 0.4s;"></div>
+
+<!-- PC 바로가기 안내 팝업 -->
+<div id="pcShortcutPopup" onclick="if(event.target===this)closePCPopup()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10001; align-items:center; justify-content:center;">
+  <div style="background:linear-gradient(135deg,#0d1a30,#091525); border:1px solid #00e5ff; border-radius:18px; padding:28px 24px; max-width:320px; width:90%; box-shadow:0 8px 40px rgba(0,229,255,0.2); position:relative;">
+    <div style="color:#00e5ff; font-size:15px; font-weight:800; margin-bottom:6px; letter-spacing:0.5px;">PC 바탕화면 바로가기</div>
+    <div style="color:#7a8aaa; font-size:11px; margin-bottom:18px;">Chrome / Edge 브라우저에서 설치하면<br>바탕화면에 바로가기가 자동 생성됩니다.</div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; align-items:flex-start; gap:10px;">
+        <div style="background:#00e5ff; color:#050810; font-size:11px; font-weight:800; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;">1</div>
+        <div style="color:#cff4ff; font-size:13px; font-weight:600; line-height:1.5;">Chrome 주소창 오른쪽<br><span style="color:#00e5ff;">⊕ 설치 아이콘</span>을 클릭하세요.</div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:10px;">
+        <div style="background:#00e5ff; color:#050810; font-size:11px; font-weight:800; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;">2</div>
+        <div style="color:#cff4ff; font-size:13px; font-weight:600; line-height:1.5;"><span style="color:#00e5ff;">"설치"</span> 버튼을 누르면<br>바탕화면 바로가기가 생성됩니다.</div>
+      </div>
+    </div>
+    <div style="margin-top:18px; color:#7a8aaa; font-size:11px; background:rgba(255,255,255,0.04); border-radius:8px; padding:8px 10px; line-height:1.6;">아이콘이 없다면 이미 설치되어 있거나,<br>HTTPS 환경이 아닐 수 있습니다.</div>
+    <button onclick="closePCPopup()" style="margin-top:18px; width:100%; padding:10px; background:rgba(0,229,255,0.12); border:1px solid #00e5ff; color:#00e5ff; font-size:13px; font-weight:700; border-radius:10px; cursor:pointer;">확인</button>
+  </div>
 </div>
 
 <script>
@@ -1989,15 +2044,65 @@ function switchVideo(num, btn) {
   document.querySelectorAll('.video-switch-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
 }
+var deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
 function toggleCharMenu() {
   var menu = document.getElementById('charMenu');
-  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  var isOpen = menu.style.display === 'flex';
+  menu.style.display = isOpen ? 'none' : 'flex';
+  if (isOpen) document.getElementById('shortcutMenu').style.display = 'none';
+}
+function toggleShortcutMenu() {
+  var sm = document.getElementById('shortcutMenu');
+  sm.style.display = sm.style.display === 'flex' ? 'none' : 'flex';
+}
+function closeAllMaetyMenus() {
+  document.getElementById('charMenu').style.display = 'none';
+  document.getElementById('shortcutMenu').style.display = 'none';
 }
 function openCompanyPopup() {
-  document.getElementById('charMenu').style.display = 'none';
+  closeAllMaetyMenus();
   var popup = document.getElementById('companyPopup');
   popup.classList.add('active');
   initPopupCanvas();
+}
+function addShortcutAndroid() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function() { deferredPrompt = null; closeAllMaetyMenus(); });
+  } else {
+    showMaetyToast('Chrome 브라우저 메뉴(⋮) →\n"홈 화면에 추가"를 눌러주세요.');
+  }
+}
+function addShortcutIOS() {
+  showMaetyToast('Safari 하단 공유버튼(□↑) →\n"홈 화면에 추가"를 눌러주세요.');
+}
+function addShortcutPC() {
+  closeAllMaetyMenus();
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function() { deferredPrompt = null; });
+  } else {
+    document.getElementById('pcShortcutPopup').style.display = 'flex';
+  }
+}
+function closePCPopup() {
+  document.getElementById('pcShortcutPopup').style.display = 'none';
+}
+function showMaetyToast(msg) {
+  var toast = document.getElementById('maetyToast');
+  toast.style.display = 'block';
+  toast.style.opacity = '1';
+  toast.innerHTML = msg.replace(/\n/g, '<br>');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(function() {
+    toast.style.opacity = '0';
+    setTimeout(function() { toast.style.display = 'none'; }, 400);
+  }, 4000);
 }
 function closeCompanyPopup(e) {
   if (e.target === document.getElementById('companyPopup')) {
