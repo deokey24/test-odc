@@ -757,8 +757,10 @@
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 20px;
     overflow: hidden;
-    display: flex;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "thumb name hashtags" "thumb body hashtags";
     cursor: pointer;
     transition: all 0.3s;
     position: relative;
@@ -772,10 +774,11 @@
 
   /* 왼쪽 썸네일 */
   .mlc-thumb {
+    grid-area: thumb;
     width: 110px;
-    flex-shrink: 0;
     position: relative;
     overflow: hidden;
+    background: #ffffff;
   }
 
   .mlc-thumb img {
@@ -811,8 +814,8 @@
 
   /* 오른쪽 정보 */
   .mlc-body {
-    flex: 1;
-    padding: 14px 14px 12px;
+    grid-area: body;
+    padding: 4px 14px 12px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -827,10 +830,13 @@
   }
 
   .mlc-name {
+    grid-area: name;
     font-family: 'Exo 2', sans-serif;
     font-size: 14px; font-weight: 700;
     color: #00e564;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding: 10px 14px 2px;
+    align-self: end;
   }
 
   .mlc-online-text {
@@ -874,11 +880,13 @@
   }
 
   .mlc-hashtags {
+    grid-area: hashtags;
     display: flex; flex-wrap: wrap; gap: 3px;
     align-items: center;
-    flex: 1;
-    margin: 0 6px;
+    max-width: 150px;
+    padding: 0 10px 0 0;
     overflow: hidden;
+    align-self: center;
   }
   .mlc-hashtags span {
     font-size: 12px; font-weight: 600;
@@ -941,6 +949,21 @@
   .mlc-rating span { color: var(--text-muted); font-size: 10px; font-weight: 400; }
 
   
+
+  @media (max-width: 600px) {
+    .mate-list-card {
+      grid-template-columns: 140px 1fr;
+      grid-template-rows: auto auto auto;
+      grid-template-areas: "thumb body" "name name" "hashtags hashtags";
+      gap: 0;
+    }
+    .mlc-thumb { width: 140px; height: 140px; margin: 0; }
+    .mlc-thumb img { width: 140px; height: 140px; object-fit: contain; object-position: center; }
+    .mlc-thumb-overlay { display: none; }
+    .mlc-body { padding-left: 0; }
+    .mlc-name { padding: 4px 14px 2px; align-self: auto; }
+    .mlc-hashtags { max-width: none; padding: 2px 14px 8px; overflow: visible; }
+  }
 
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -1553,16 +1576,8 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
+        <div class="mlc-name">노바 (NOVA)</div>
         <div class="mlc-body">
-          <div class="mlc-top">
-            <div class="mlc-name">노바 (NOVA)</div>
-            <div class="mlc-hashtags">
-              <span>병약소녀</span><span>저음</span><span>여우</span><span>친화력좋음</span>
-            </div>
-            <div class="mlc-online-text">
-              <span class="mlc-online-dot"></span> Online
-            </div>
-          </div>
           <div class="mlc-tags">
             <span class="mlc-tag game">🎮 발로란트</span>
             <span class="mlc-tag tier-radiant">👑 레디언트</span>
@@ -1578,6 +1593,9 @@
             <div class="mlc-rating">★ 4.9 <span>(1.2k)</span></div>
           </div>
         </div>
+        <div class="mlc-hashtags">
+          <span>병약소녀</span><span>저음</span><span>여우</span><span>친화력좋음</span>
+        </div>
       </div>
 
       <!-- 카드 2: LYRA (핑크 캐릭터) -->
@@ -1587,16 +1605,8 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
+        <div class="mlc-name">리아 (RIA)</div>
         <div class="mlc-body">
-          <div class="mlc-top">
-            <div class="mlc-name">리아 (RIA)</div>
-            <div class="mlc-hashtags">
-              <span>다정다감</span><span>공감MAX</span><span>감성풍부</span><span>쑥쓰러움</span>
-            </div>
-            <div class="mlc-online-text">
-              <span class="mlc-online-dot"></span> Online
-            </div>
-          </div>
           <div class="mlc-tags">
             <span class="mlc-tag game">🎮 리그오브레전드</span>
             <span class="mlc-tag tier-diamond">💠 다이아</span>
@@ -1612,6 +1622,9 @@
             <div class="mlc-rating">★ 5.0 <span>(850)</span></div>
           </div>
         </div>
+        <div class="mlc-hashtags">
+          <span>다정다감</span><span>공감MAX</span><span>감성풍부</span><span>쑥쓰러움</span>
+        </div>
       </div>
 
       <!-- 카드 3: 세미 -->
@@ -1621,16 +1634,8 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
+        <div class="mlc-name">세미 (SEMI)</div>
         <div class="mlc-body">
-          <div class="mlc-top">
-            <div class="mlc-name">세미 (SEMI)</div>
-            <div class="mlc-hashtags">
-              <span>발랄</span><span>유쾌</span><span>미친텐션</span><span>욕·샤우팅주의</span><span>게임덕후</span><span>반말가능</span>
-            </div>
-            <div class="mlc-online-text">
-              <span class="mlc-online-dot"></span> Online
-            </div>
-          </div>
           <div class="mlc-tags">
             <span class="mlc-tag game">🎮 게임 덕후</span>
             <span class="mlc-tag game">🎮 오버워치</span>
@@ -1646,6 +1651,9 @@
             <div class="mlc-rating">★ 4.8 <span>(930)</span></div>
           </div>
         </div>
+        <div class="mlc-hashtags">
+          <span>발랄</span><span>유쾌</span><span>미친텐션</span><span>욕·샤우팅주의</span><span>게임덕후</span><span>반말가능</span>
+        </div>
       </div>
 
       <!-- 카드 4: 태오 -->
@@ -1655,16 +1663,8 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
+        <div class="mlc-name">태오 (TAEO)</div>
         <div class="mlc-body">
-          <div class="mlc-top">
-            <div class="mlc-name">태오 (TAEO)</div>
-            <div class="mlc-hashtags">
-              <span>리드</span><span>능글</span><span>맑은중저음</span><span>장난끼</span><span>게임덕후</span><span>반말가능</span>
-            </div>
-            <div class="mlc-online-text">
-              <span class="mlc-online-dot"></span> Online
-            </div>
-          </div>
           <div class="mlc-tags">
             <span class="mlc-tag tier-radiant">👑 발로란트 초월자</span>
             <span class="mlc-tag game">🎮 게임 덕후</span>
@@ -1679,6 +1679,9 @@
             </div>
             <div class="mlc-rating">★ 4.9 <span>(1.1k)</span></div>
           </div>
+        </div>
+        <div class="mlc-hashtags">
+          <span>리드</span><span>능글</span><span>맑은중저음</span><span>장난끼</span><span>게임덕후</span><span>반말가능</span>
         </div>
       </div>
 
