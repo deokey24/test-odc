@@ -2207,6 +2207,71 @@ function showPage(pageId, navEl) {
 <!-- 메이티 안내 토스트 -->
 <div id="maetyToast" style="display:none; position:fixed; bottom:170px; right:24px; background:linear-gradient(135deg,#0b1f3a,#091525); border:1px solid #00e5ff; color:#cff4ff; font-size:12px; font-weight:600; padding:10px 14px; border-radius:12px; box-shadow:0 4px 16px rgba(0,229,255,0.25); z-index:10000; max-width:220px; line-height:1.6; pointer-events:none; transition:opacity 0.4s;"></div>
 
+<!-- iOS 홈 화면 추가 안내 팝업 -->
+<div id="iosShortcutPopup" onclick="if(event.target===this)this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:10001; align-items:center; justify-content:center;">
+  <div style="background:linear-gradient(135deg,#0d1a30,#091525); border:1px solid #00e5ff; border-radius:18px; padding:24px 20px; max-width:310px; width:90%; box-shadow:0 8px 40px rgba(0,229,255,0.2);">
+    <div style="color:#00e5ff; font-size:15px; font-weight:800; margin-bottom:4px;">아이폰 홈 화면에 추가</div>
+    <div style="color:#7a8aaa; font-size:11px; margin-bottom:16px;">Safari 또는 Chrome 앱에서 추가할 수 있어요.</div>
+    <!-- Safari -->
+    <div style="margin-bottom:14px;">
+      <div style="color:#cff4ff; font-size:12px; font-weight:800; margin-bottom:8px;">🧭 Safari</div>
+      <div style="display:flex; flex-direction:column; gap:7px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+          <div style="color:#cff4ff; font-size:12px; font-weight:600;">하단 <span style="color:#00e5ff;">공유 버튼 □↑</span> 탭</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+          <div style="color:#cff4ff; font-size:12px; font-weight:600;"><span style="color:#00e5ff;">"홈 화면에 추가"</span> 선택</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+          <div style="color:#cff4ff; font-size:12px; font-weight:600;">우측 상단 <span style="color:#00e5ff;">"추가"</span> 탭</div>
+        </div>
+      </div>
+    </div>
+    <!-- Chrome iOS -->
+    <div style="border-top:1px solid rgba(0,229,255,0.15); padding-top:14px; margin-bottom:16px;">
+      <div style="color:#cff4ff; font-size:12px; font-weight:800; margin-bottom:8px;">🌐 Chrome</div>
+      <div style="display:flex; flex-direction:column; gap:7px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+          <div style="color:#cff4ff; font-size:12px; font-weight:600;">주소창 오른쪽 <span style="color:#00e5ff;">⋯ 메뉴</span> 탭</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+          <div style="color:#cff4ff; font-size:12px; font-weight:600;"><span style="color:#00e5ff;">"홈 화면에 추가"</span> 선택 후 추가</div>
+        </div>
+      </div>
+    </div>
+    <button onclick="document.getElementById('iosShortcutPopup').style.display='none'" style="width:100%; padding:10px; background:rgba(0,229,255,0.12); border:1px solid #00e5ff; color:#00e5ff; font-size:13px; font-weight:700; border-radius:10px; cursor:pointer;">확인</button>
+  </div>
+</div>
+
+<!-- Android 폴백 안내 팝업 (Chrome 외 브라우저) -->
+<div id="androidShortcutPopup" onclick="if(event.target===this)this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:10001; align-items:center; justify-content:center;">
+  <div style="background:linear-gradient(135deg,#0d1a30,#091525); border:1px solid #00e5ff; border-radius:18px; padding:24px 20px; max-width:310px; width:90%; box-shadow:0 8px 40px rgba(0,229,255,0.2);">
+    <div style="color:#00e5ff; font-size:15px; font-weight:800; margin-bottom:4px;">안드로이드 홈 화면에 추가</div>
+    <div style="color:#7a8aaa; font-size:11px; margin-bottom:16px;">Chrome 브라우저를 사용하면 자동 팝업으로<br>더 편리하게 추가할 수 있어요.</div>
+    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+        <div style="color:#cff4ff; font-size:12px; font-weight:600;">Chrome 앱에서 이 페이지 열기</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+        <div style="color:#cff4ff; font-size:12px; font-weight:600;">우측 상단 <span style="color:#00e5ff;">⋮ 메뉴</span> 탭</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="background:#00e5ff; color:#050810; font-size:10px; font-weight:800; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+        <div style="color:#cff4ff; font-size:12px; font-weight:600;"><span style="color:#00e5ff;">"앱 설치"</span> 또는 <span style="color:#00e5ff;">"홈 화면에 추가"</span></div>
+      </div>
+    </div>
+    <div style="color:#7a8aaa; font-size:11px; background:rgba(255,255,255,0.04); border-radius:8px; padding:8px 10px; line-height:1.6; margin-bottom:14px;">Chrome에서 열었는데도 팝업이 없다면<br>이미 설치되어 있을 수 있습니다.</div>
+    <button onclick="document.getElementById('androidShortcutPopup').style.display='none'" style="width:100%; padding:10px; background:rgba(0,229,255,0.12); border:1px solid #00e5ff; color:#00e5ff; font-size:13px; font-weight:700; border-radius:10px; cursor:pointer;">확인</button>
+  </div>
+</div>
+
 <!-- PC 바로가기 안내 팝업 -->
 <div id="pcShortcutPopup" onclick="if(event.target===this)closePCPopup()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10001; align-items:center; justify-content:center;">
   <div style="background:linear-gradient(135deg,#0d1a30,#091525); border:1px solid #00e5ff; border-radius:18px; padding:28px 24px; max-width:320px; width:90%; box-shadow:0 8px 40px rgba(0,229,255,0.2); position:relative;">
@@ -2454,15 +2519,17 @@ function openCompanyPopup() {
   initPopupCanvas();
 }
 function addShortcutAndroid() {
+  closeAllMaetyMenus();
   if (deferredPrompt) {
     deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function() { deferredPrompt = null; closeAllMaetyMenus(); });
+    deferredPrompt.userChoice.then(function() { deferredPrompt = null; });
   } else {
-    showMaetyToast('Chrome 브라우저 메뉴(⋮) →\n"홈 화면에 추가"를 눌러주세요.');
+    document.getElementById('androidShortcutPopup').style.display = 'flex';
   }
 }
 function addShortcutIOS() {
-  showMaetyToast('Safari 하단 공유버튼(□↑) →\n"홈 화면에 추가"를 눌러주세요.');
+  closeAllMaetyMenus();
+  document.getElementById('iosShortcutPopup').style.display = 'flex';
 }
 function addShortcutPC() {
   closeAllMaetyMenus();
