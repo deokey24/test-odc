@@ -73,25 +73,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 20px 32px;
+    padding: 12px 20px;
     position: sticky;
     top: 0;
     z-index: 100;
     background: transparent;
+    overflow: visible;
   }
 
   .logo {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background: transparent;
   }
   .logo img {
-    height: 72px;
+    height: 160px;
     width: auto;
     display: block;
     background: none;
     filter: none;
+  }
+
+  @media (max-width: 1023px) {
+    .header { padding: 8px 20px 8px 4px; }
+    .logo img { height: 110px; }
   }
 
   .header-actions { display: flex; gap: 12px; align-items: center; }
