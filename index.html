@@ -1362,42 +1362,99 @@
     min-height: 0;
     object-fit: contain;
     object-position: center;
-    opacity: 0.22;
+    opacity: 0.45;
     display: block;
   }
   .lore-content {
     position: relative;
     z-index: 1;
   }
-  .home-main-player {
-    padding: 0 20px 48px;
-  }
-  .home-main-player-title {
-    font-family: 'Exo 2', 'Noto Sans KR', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--neon-cyan);
-    margin-bottom: 14px;
-    letter-spacing: 0.5px;
-  }
-  @media (min-width: 1024px) {
-    .home-main-player-title { font-size: 22px; }
-  }
-  .home-main-player-inner {
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: 16px;
+  .home-lore-section {
+    position: relative;
+    margin: 0 20px 48px;
+    border-radius: 24px;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: #000;
+    background: #020408;
+    border: 1px solid rgba(0,229,255,0.18);
+    min-height: 220px;
+    display: flex;
+    align-items: center;
   }
-  .home-main-player-inner video {
-    width: 100%;
+  .home-lore-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .home-lore-bg img {
+    flex: 1;
+    width: 50%;
     height: 100%;
-    display: block;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.38;
+  }
+  .home-lore-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(2,4,8,0.7) 0%, rgba(2,4,8,0.2) 50%, rgba(2,4,8,0.7) 100%);
+  }
+  .home-lore-inner {
+    position: relative;
+    z-index: 1;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .home-lore-label {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 2px;
+    opacity: 0.7;
+  }
+  .home-lore-title {
+    font-family: 'Exo 2', 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 24px rgba(0,229,255,0.35);
+  }
+  .home-lore-desc {
+    font-size: 13px;
+    color: rgba(200,220,255,0.75);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .home-lore-btn {
+    margin-top: 6px;
+    background: transparent;
+    border: 1px solid rgba(0,229,255,0.55);
+    color: var(--neon-cyan);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px 28px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .home-lore-btn:hover {
+    background: rgba(0,229,255,0.1);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 16px rgba(0,229,255,0.3);
   }
   @media (min-width: 1024px) {
-    .home-main-player { padding: 0 40px 64px; }
+    .home-lore-section { margin: 0 40px 64px; min-height: 260px; }
+    .home-lore-title { font-size: 24px; }
+    .home-lore-inner { padding: 52px 48px; gap: 16px; }
   }
 </style>
 </head>
@@ -1462,12 +1519,16 @@
       </div>
     </div>
 
-    <div class="home-main-player">
-      <div class="home-main-player-title">VMate 공식영상</div>
-      <div class="home-main-player-inner">
-        <video id="mainVideo" controls preload="metadata" poster="images/sum02.png">
-          <source src="https://img.wecandoeat.com/hd/test01.mp4" type="video/mp4">
-        </video>
+    <div class="home-lore-section">
+      <div class="home-lore-bg">
+        <img src="images/intro_1.png" alt="">
+        <img src="images/intro_3.png" alt="">
+      </div>
+      <div class="home-lore-inner">
+        <div class="home-lore-label">LORE // 세계관</div>
+        <div class="home-lore-title">브이메이트(VMate) 세계관</div>
+        <p class="home-lore-desc">"지금, 이순간 누군가와 연결 신호가 있습니다."</p>
+        <button class="home-lore-btn" onclick="openLorePopup()">열기 →</button>
       </div>
     </div>
 
@@ -2100,7 +2161,7 @@ function showPage(pageId, navEl) {
 <div id="maetyToast" style="display:none; position:fixed; bottom:170px; right:24px; background:linear-gradient(135deg,#0b1f3a,#091525); border:1px solid #00e5ff; color:#cff4ff; font-size:12px; font-weight:600; padding:10px 14px; border-radius:12px; box-shadow:0 4px 16px rgba(0,229,255,0.25); z-index:10000; max-width:220px; line-height:1.6; pointer-events:none; transition:opacity 0.4s;"></div>
 
 <!-- 세계관 팝업 -->
-<div id="lorePopup" onclick="closeLorePopup(event)" style="display:none; position:fixed; inset:0; z-index:10000; background:rgba(5,8,16,0.88); backdrop-filter:blur(6px); overflow-y:auto; padding:40px 20px; align-items:flex-start; justify-content:center;">
+<div id="lorePopup" onclick="closeLorePopup(event)" style="display:none; position:fixed; inset:0; z-index:10000; background:rgba(5,8,16,0.72); backdrop-filter:blur(4px); overflow-y:auto; padding:40px 20px; align-items:flex-start; justify-content:center;">
   <div class="company-popup-inner" style="position:relative;">
     <canvas class="lore-popup-canvas" id="loreCanvas"></canvas>
     <div class="lore-bg-slide">
