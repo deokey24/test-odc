@@ -73,23 +73,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 20px 16px;
+    padding: 40px 20px 32px;
     position: sticky;
     top: 0;
     z-index: 100;
-    background: linear-gradient(180deg, var(--bg-deep) 70%, transparent 100%);
+    background: transparent;
   }
 
   .logo {
     flex: 1;
     display: flex;
     align-items: center;
+    background: transparent;
   }
   .logo img {
-    height: 36px;
+    height: 72px;
     width: auto;
     display: block;
-    filter: drop-shadow(0 0 8px rgba(255, 45, 120, 0.5));
+    background: none;
+    filter: none;
   }
 
   .header-actions { display: flex; gap: 12px; align-items: center; }
@@ -129,7 +131,9 @@
   .player-title-clip {
     flex: 1;
     overflow: hidden;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   }
@@ -137,6 +141,7 @@
     white-space: nowrap;
     font-size: 12px;
     font-weight: 600;
+    line-height: 1;
     color: var(--text-primary);
     display: inline-block;
     padding: 0 4px;
@@ -1422,9 +1427,9 @@
     font-family: 'Exo 2', 'Noto Sans KR', sans-serif;
     font-size: 20px;
     font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 24px rgba(0,229,255,0.35);
+    color: var(--neon-cyan);
+    letter-spacing: 2px;
+    opacity: 0.7;
   }
   .home-lore-desc {
     font-size: 13px;
@@ -1525,7 +1530,6 @@
         <img src="images/intro_3.png" alt="">
       </div>
       <div class="home-lore-inner">
-        <div class="home-lore-label">LORE // 세계관</div>
         <div class="home-lore-title">브이메이트(VMate) 세계관</div>
         <p class="home-lore-desc">"지금, 이순간 누군가와 연결 신호가 있습니다."</p>
         <button class="home-lore-btn" onclick="openLorePopup()">열기 →</button>
