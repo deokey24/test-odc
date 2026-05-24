@@ -2465,8 +2465,10 @@ function playerUpdateUI(playing) {
   titleEl.classList.remove('marquee');
   void titleEl.offsetWidth;
   var clip = titleEl.parentElement;
+  clip.style.justifyContent = '';
   var overflow = titleEl.scrollWidth - clip.clientWidth;
   if (overflow > 0) {
+    clip.style.justifyContent = 'flex-start';
     var dur = Math.max(5, overflow / 25);
     titleEl.style.setProperty('--mend', '-' + overflow + 'px');
     titleEl.style.setProperty('--mdur', dur + 's');
