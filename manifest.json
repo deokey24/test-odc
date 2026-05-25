@@ -1,6 +1,6 @@
 {
-  "name": "V-MATE",
-  "short_name": "V-MATE",
+  "name": "VMATE",
+  "short_name": "VMATE",
   "description": "가상 게이밍 메이트",
   "start_url": "./index.html",
   "display": "standalone",

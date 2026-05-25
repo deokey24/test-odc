@@ -544,42 +544,41 @@
   .about-text p:last-child { margin-bottom: 0; }
 
   .protocol-card {
-    background: rgba(8, 5, 15, 0.9);
-    border: 1px solid rgba(180, 20, 50, 0.35);
-    border-left: 3px solid #b81030;
-    border-radius: 10px;
-    padding: 28px 28px 24px;
-    margin: 8px 0 20px;
-    width: 80%;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 14px 0 12px;
+    margin: 8px 0 16px;
+    width: 72%;
   }
   .protocol-header {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
     font-family: 'Exo 2', sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 3px;
     color: #b81030;
-    margin-bottom: 22px;
+    margin-bottom: 12px;
   }
   .protocol-header::before {
     content: '';
     display: block;
-    width: 32px;
+    width: 24px;
     height: 1px;
     background: #b81030;
     flex-shrink: 0;
   }
   .protocol-rules {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
   .protocol-rule {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-size: 13px;
     color: rgba(220, 230, 255, 0.88);
     font-weight: 500;
@@ -593,8 +592,8 @@
     flex-shrink: 0;
   }
   @media (min-width: 1024px) {
-    .protocol-card { padding: 32px 36px 28px; }
-    .protocol-header { font-size: 11px; margin-bottom: 26px; }
+    .protocol-card { padding: 18px 20px 14px; }
+    .protocol-header { font-size: 11px; margin-bottom: 14px; }
     .protocol-rule { font-size: 15px; }
   }
 
@@ -2415,10 +2414,15 @@ startMateyAnim();
 
 /* ── 뮤직 플레이어 ── */
 var playerSongs = [
-  { title: 'Connected Hearts Version II', src: 'https://img.wecandoeat.com/hd/Connected%20Hearts%20Version%20ll.mp3' },
-  { title: 'Connected Hearts',            src: 'https://img.wecandoeat.com/hd/Connected%20Hearts.mp3' },
-  { title: 'Discord Heartbeat',           src: 'https://img.wecandoeat.com/hd/Discord%20Heartbeat.mp3' },
-  { title: 'Warm Pixel Heart',            src: 'https://img.wecandoeat.com/hd/Warm%20Pixel%20Heart.mp3' },
+  { title: 'Connected Hearts',            src: 'https://img.wecandoeat.com/VMate/Connected%20Hearts.mp3' },
+  { title: 'Connected Hearts Version II', src: 'https://img.wecandoeat.com/VMate/Connected%20Hearts%20Version%20ll.mp3' },
+  { title: 'Discord Heartbeat',           src: 'https://img.wecandoeat.com/VMate/Discord%20Heartbeat.mp3' },
+  { title: 'I am not alone',             src: 'https://img.wecandoeat.com/VMate/I%20am%20not%20alone.mp3' },
+  { title: 'Mate is Here',               src: 'https://img.wecandoeat.com/VMate/Mate%20is%20Here.mp3' },
+  { title: 'Pixel Heartwater',           src: 'https://img.wecandoeat.com/VMate/Pixel%20Heartwater.mp3' },
+  { title: 'Pixel Mate',                 src: 'https://img.wecandoeat.com/VMate/Pixel%20Mate.mp3' },
+  { title: 'Warm Pixel Heart',           src: 'https://img.wecandoeat.com/VMate/Warm%20Pixel%20Heart.mp3' },
+  { title: 'Warm Pixel Heart Beat',      src: 'https://img.wecandoeat.com/VMate/Warm%20Pixel%20Heart%20Beat.mp3' },
 ];
 var playerIdx = 0;
 var playerAudio = new Audio();
