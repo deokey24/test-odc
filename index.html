@@ -1504,7 +1504,7 @@
       <div class="player-dropdown" id="playerDropdown">
         <div class="player-vol-row">
           <span class="player-vol-icon" id="playerVolIcon">🔉</span>
-          <input type="range" min="0" max="1" step="0.01" value="0.3" id="playerVolSlider" oninput="playerSetVol(this.value)">
+          <input type="range" min="0" max="1" step="0.01" value="0.1" id="playerVolSlider" oninput="playerSetVol(this.value)">
         </div>
         <div class="player-list-label">PLAYLIST</div>
         <div id="playerList"></div>
@@ -2437,7 +2437,7 @@ var playerSongs = [
 ];
 var playerIdx = 0;
 var playerAudio = new Audio();
-playerAudio.volume = 0.3;
+playerAudio.volume = 0.1;
 playerAudio.loop = false;
 playerAudio.addEventListener('ended', function() { playerNext(); });
 
