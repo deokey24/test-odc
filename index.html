@@ -74,8 +74,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 20px;
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 100;
     background: transparent;
     overflow: visible;
@@ -780,6 +779,18 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     padding: 10px 14px 2px;
     align-self: end;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mlc-mbti {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
   }
 
   .mlc-online-text {
@@ -1269,7 +1280,7 @@
     display: flex;
     align-items: center;
     overflow: visible;
-    min-height: 220px;
+    min-height: 440px;
   }
 
   .hero-bg-img {
@@ -1492,8 +1503,8 @@
       </div>
       <div class="player-dropdown" id="playerDropdown">
         <div class="player-vol-row">
-          <span class="player-vol-icon" id="playerVolIcon">🔊</span>
-          <input type="range" min="0" max="1" step="0.01" value="0.7" id="playerVolSlider" oninput="playerSetVol(this.value)">
+          <span class="player-vol-icon" id="playerVolIcon">🔉</span>
+          <input type="range" min="0" max="1" step="0.01" value="0.3" id="playerVolSlider" oninput="playerSetVol(this.value)">
         </div>
         <div class="player-list-label">PLAYLIST</div>
         <div id="playerList"></div>
@@ -1584,7 +1595,7 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
-        <div class="mlc-name">노바 (NOVA)</div>
+        <div class="mlc-name">노바 (NOVA)<span class="mlc-mbti">INFP</span></div>
         <div class="mlc-body">
           <div class="mlc-tags">
             <span class="mlc-tag game">🎮 발로란트</span>
@@ -1613,7 +1624,7 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
-        <div class="mlc-name">리아 (RIA)</div>
+        <div class="mlc-name">리아 (RIA)<span class="mlc-mbti">ENFJ</span></div>
         <div class="mlc-body">
           <div class="mlc-tags">
             <span class="mlc-tag game">🎮 리그오브레전드</span>
@@ -1642,7 +1653,7 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
-        <div class="mlc-name">세미 (SEMI)</div>
+        <div class="mlc-name">세미 (SEMI)<span class="mlc-mbti">INTP</span></div>
         <div class="mlc-body">
           <div class="mlc-tags">
             <span class="mlc-tag game">🎮 게임 덕후</span>
@@ -1671,7 +1682,7 @@
           <div class="mlc-thumb-overlay"></div>
           <div class="mlc-online">ONLINE</div>
         </div>
-        <div class="mlc-name">태오 (TAEO)</div>
+        <div class="mlc-name">태오 (TAEO)<span class="mlc-mbti">ENTP</span></div>
         <div class="mlc-body">
           <div class="mlc-tags">
             <span class="mlc-tag tier-radiant">👑 발로란트 초월자</span>
@@ -2426,7 +2437,7 @@ var playerSongs = [
 ];
 var playerIdx = 0;
 var playerAudio = new Audio();
-playerAudio.volume = 0.7;
+playerAudio.volume = 0.3;
 playerAudio.loop = false;
 playerAudio.addEventListener('ended', function() { playerNext(); });
 
